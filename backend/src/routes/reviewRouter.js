@@ -13,7 +13,30 @@ router.get('/allReviews', async (req, res) => {
         }
 })
 
-
+router.get('/userReviews', async (req, res) => {
+        const userId = req.userId;
+        const sql = 'SELECT * FROM reviews WHERE user_id = ?';
+        const values = [userId];
+        try {
+                const [result] = await pool.promise().query(sql, values);
+                if(result) {
+                        res.send({
+                                status: 200,
+                                message: "Successfully got user reviews",
+                                result: result
+                        })
+                }
+                else {
+                        throw new Error("User Reviews Not Found");
+                }
+        }
+        catch(e) {
+                res.send({
+                        status: 500,
+                        message: e.message
+                })
+        }
+})
 
 router.post('/createReview', async (req, res) => {
         const { movie_id, review } = req.body;

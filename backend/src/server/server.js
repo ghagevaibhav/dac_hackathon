@@ -6,6 +6,7 @@ import userRouter from '../routes/userRouter.js';
 import middleware from '../middleware/middleware.js';
 import movieRouter from '../routes/movieRouter.js';
 import reviewRouter from '../routes/reviewRouter.js';
+import shareRouter from '../routes/shareRouter.js';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -18,6 +19,7 @@ app.use(middleware);
 app.use("/users", userRouter);
 app.use("/movies", movieRouter);
 app.use('/reviews', reviewRouter);
+app.use("/share", shareRouter);
 
 app.listen(port, () => {        
         console.log(`Server Started on Port ${port}`);
