@@ -32,6 +32,9 @@ create table movies (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+alter table movies add column poster_url VARCHAR(255);
+alter table movies add column average_rating FLOAT(2,1);
+
 create table shares (
         user_id INT,
         review_id INT,

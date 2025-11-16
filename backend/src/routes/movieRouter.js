@@ -15,10 +15,9 @@ router.get("/", async (req, res) => {
 })
 
 
-// router.get('/:id', async (req, res) => {
-//         const movieId = req.params;
-
-//         const
-// })
+router.get('/movie:id', async (req, res) => {
+        const { id } = req.params;
+        const sql = `SELECT * FROM movies WHERE id = ?`;
+})
 
 export default router;
